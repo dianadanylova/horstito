@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: horstito
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: horstito
+  template:
+    metadata:
+      labels:
+        app: horstito
+    spec:
+      containers:
+        - name: horstito
+          image: horstito:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "250m"
